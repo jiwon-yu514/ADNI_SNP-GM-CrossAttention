@@ -3,9 +3,11 @@
 This project investigates multimodal Alzheimer’s disease stage classification using clinical, SNP, and gray matter ROI features derived from the ADNI dataset. The model focuses on learning relationships between genetic information and brain structural changes through SNP–GM cross-attention, with the goal of improving disease-stage classification performance.
 
 
-## Data Description
+## Data Description and Preprocessing
 
-This project uses preprocessed multimodal features derived from the ADNI dataset, including GWAS-based SNP features, VBM-based gray matter ROI volume features extracted from T1-weighted MRI, and clinical variables such as age, sex, education, and MMSE. The cohort consists of 734 subjects from four diagnostic groups: CN, EMCI, LMCI, and AD.
+This project uses preprocessed multimodal features derived from the ADNI dataset, including clinical information, SNP features, and gray matter ROI volume features. The cohort consists of 734 subjects from four diagnostic groups: CN, EMCI, LMCI, and AD.
+
+To effectively integrate heterogeneous data with different characteristics, each modality is first mapped into a shared latent space with the same embedding dimension (`d = 64`). SNP and GM data are processed through independent token embedding-based encoders. The SNP features are transformed into a token-level representation of size `64 × 64`, while the GM features are transformed into a ROI-level representation of size `93 × 64`.
 
 | File name | Description |
 |---|---|
@@ -17,10 +19,9 @@ This project uses preprocessed multimodal features derived from the ADNI dataset
 | `X_GM.npy` | VBM-based gray matter ROI volume features extracted from T1-weighted MRI; 93 ROI features |
 | `Y_dis.npy` | Diagnostic labels for CN, EMCI, LMCI, and AD |
 
-Clinical variables consist of age, sex, education, and MMSE. To reduce scale differences across modalities, Z-score normalization is applied to the clinical variables and GM ROI volume features before model training.
+Clinical information consists of age, sex, education, and MMSE. To reduce bias caused by scale differences across modalities, Z-score normalization is applied during preprocessing. In the notebook, the clinical variables are combined into a 4-dimensional clinical feature vector, and sex is label-encoded before model training.
 
 The data files are not included in this repository due to ADNI data usage restrictions.
-
 
 
 ## Experiments
