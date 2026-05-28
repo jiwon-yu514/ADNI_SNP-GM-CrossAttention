@@ -1,6 +1,6 @@
 # SNP–GM Cross-Attention for ADNI Binary Classification
 
-This project investigates multimodal Alzheimer’s disease classification using ADNI dataset-derived clinical, SNP, and gray matter ROI features. The model focuses on learning relationships between genetic information and brain structural features through SNP–GM cross-attention, with the goal of improving disease-stage classification performance.
+This project investigates multimodal Alzheimer’s disease stage classification using clinical, SNP, and gray matter ROI features derived from the ADNI dataset. The model focuses on learning relationships between genetic information and brain structural changes through SNP–GM cross-attention, with the goal of improving disease-stage classification performance.
 
 
 ## Data files
