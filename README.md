@@ -5,7 +5,7 @@ This project investigates multimodal Alzheimer’s disease stage classification 
 
 ## Model Architecture
 
-![Model Architecture](figures/Model Architecture.png)
+![Model Architecture](figures/model_architecture)
 
 The proposed model consists of three main stages: feature embedding, bidirectional SNP–GM cross-attention, and multimodal feature integration for classification.
 
