@@ -32,7 +32,7 @@ The data files are not included in this repository due to ADNI data usage restri
 
 ## Experiments
 
-The notebook evaluates the following binary tasks:
+The experiments evaluate the following binary classification tasks:
 
 - CN vs EMCI
 - CN vs MCI
