@@ -17,7 +17,9 @@ This project uses preprocessed multimodal features derived from the ADNI dataset
 | `X_GM.npy` | VBM-based gray matter ROI volume features extracted from T1-weighted MRI; 93 ROI features |
 | `Y_dis.npy` | Diagnostic labels for CN, EMCI, LMCI, and AD |
 
-Clinical variables are combined into a 4-dimensional clinical feature vector. Sex is label-encoded, and clinical and GM features are standardized before model training. The data files are not included in this repository due to ADNI data usage restrictions.
+Clinical variables consist of age, sex, education, and MMSE. To reduce scale differences across modalities, Z-score normalization is applied to the clinical variables and GM ROI volume features before model training.
+
+The data files are not included in this repository due to ADNI data usage restrictions.
 
 
 
