@@ -1,20 +1,6 @@
 # SNP–GM Cross-Attention for ADNI Binary Classification
 
-This repository contains a Colab/Jupyter notebook for multimodal binary classification using ADNI-derived features:
-
-- Clinical features: age, sex, education, MMSE
-- SNP features
-- Gray matter ROI volume features
-- Attention-based fusion models: self-attention, cross-attention, and self+cross attention
-
-## Repository files
-
-```text
-SNPXGM_github_clean.ipynb
-README.md
-requirements.txt
-.gitignore
-```
+This project explores multimodal deep learning for Alzheimer’s disease stage classification using ADNI-derived clinical, genetic, and brain structure features. The main focus is to investigate whether SNP–GM cross-attention can capture meaningful relationships between genetic variation and gray matter structural changes, and whether these relationships can improve binary classification performance across different disease-stage comparison tasks.
 
 ## Data files
 
