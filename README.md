@@ -3,6 +3,12 @@
 This project investigates multimodal Alzheimer’s disease stage classification using clinical, SNP, and gray matter ROI features derived from the ADNI dataset. The model focuses on learning relationships between genetic information and brain structural changes through SNP–GM cross-attention, with the goal of improving disease-stage classification performance.
 
 
+## Model Architecture
+
+![Model Architecture](figures/model_architecture.png)
+
+The proposed model consists of three main stages: feature embedding, bidirectional SNP–GM cross-attention, and multimodal feature integration for classification.
+
 ## Data Description and Preprocessing
 
 This project uses preprocessed multimodal features derived from the ADNI dataset, including clinical information, SNP features, and gray matter ROI volume features. The cohort consists of 734 subjects from four diagnostic groups: CN, EMCI, LMCI, and AD.
@@ -42,6 +48,16 @@ Metrics:
 - Sensitivity
 - Specificity
 
-## Notes on reproducibility
+## Results
 
-The notebook uses random seeds, but GPU-based deep learning can still show small variations across repeated runs depending on CUDA, PyTorch, DataLoader shuffling, and nondeterministic operations. For strict reproducibility, fix the DataLoader generator and deterministic backend settings before final reporting.
+The model was evaluated using 5-fold cross-validation across five binary classification tasks. The table below summarizes the performance of the proposed Cross-Attention model reported in the paper.
+
+| Task | AUC | Accuracy | Macro-F1 | Sensitivity | Specificity |
+|---|---:|---:|---:|---:|---:|
+| CN vs AD | 0.9736 ± 0.0256 | 0.9506 ± 0.0188 | 0.9500 ± 0.0191 | 0.9362 ± 0.0434 | 0.9622 ± 0.0286 |
+| CN vs eMCI | 0.8185 ± 0.0573 | 0.7828 ± 0.0494 | 0.7805 ± 0.0370 | 0.7377 ± 0.0955 | 0.8250 ± 0.0667 |
+| CN vs MCI | 0.8589 ± 0.0383 | 0.8092 ± 0.0424 | 0.7972 ± 0.0425 | 0.8256 ± 0.0643 | 0.7823 ± 0.0707 |
+| LMCI vs AD | 0.8601 ± 0.0660 | 0.7963 ± 0.0618 | 0.7961 ± 0.0618 | 0.7682 ± 0.0640 | 0.8274 ± 0.0756 |
+| MCI vs AD | 0.8846 ± 0.0382 | 0.8258 ± 0.0525 | 0.8022 ± 0.0484 | 0.7225 ± 0.0737 | 0.8768 ± 0.1023 |
+
+The proposed SNP–GM Cross-Attention model achieved strong performance across all binary classification tasks, with the highest AUC in the CN vs AD task. It also showed meaningful performance improvement in early-stage classification tasks such as CN vs eMCI and CN vs MCI, where disease-stage differences are more subtle.
