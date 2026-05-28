@@ -5,29 +5,19 @@ This project investigates multimodal Alzheimer’s disease stage classification 
 
 ## Data Description
 
-This project uses preprocessed multimodal features derived from the ADNI dataset.  
-The original cohort consists of 734 subjects across four diagnostic groups: CN, EMCI, LMCI, and AD.  
-The model uses three types of input features: clinical variables, SNP features, and gray matter ROI volume features.
+This project uses preprocessed multimodal features derived from the ADNI dataset, including GWAS-based SNP features, VBM-based gray matter ROI volume features extracted from T1-weighted MRI, and clinical variables such as age, sex, education, and MMSE. The cohort consists of 734 subjects from four diagnostic groups: CN, EMCI, LMCI, and AD.
 
-The data files used in this notebook are listed below.
+| File name | Description |
+|---|---|
+| `C_age.npy` | Age of each subject |
+| `C_sex.npy` | Sex of each subject |
+| `C_edu.npy` | Education years |
+| `S_MMSE.npy` | MMSE cognitive assessment score |
+| `X_SNP 1.npy` | GWAS-based SNP feature matrix with 2,098 SNP features |
+| `X_GM.npy` | VBM-based gray matter ROI volume features extracted from T1-weighted MRI; 93 ROI features |
+| `Y_dis.npy` | Diagnostic labels for CN, EMCI, LMCI, and AD |
 
-| File name | Description | Shape / Content |
-|---|---|---|
-| `C_age.npy` | Age information for each subject | Clinical variable |
-| `C_sex.npy` | Sex information for each subject | Clinical variable |
-| `C_edu.npy` | Education years for each subject | Clinical variable |
-| `S_MMSE.npy` | Mini-Mental State Examination score | Clinical cognitive score |
-| `X_SNP 1.npy` | SNP feature matrix extracted from GWAS-based genetic data | 2,098 SNP features |
-| `X_GM.npy` | Gray matter ROI volume feature matrix extracted from T1-weighted MRI using VBM | 93 GM ROI features |
-| `Y_dis.npy` | Diagnostic labels for disease-stage classification | CN, EMCI, LMCI, AD |
-
-Clinical features are constructed by combining age, sex, education, and MMSE.  
-Sex is label-encoded, and continuous clinical variables are standardized before model training.  
-Gray matter ROI features are also standardized to reduce scale differences across modalities.  
-SNP features are used as high-dimensional genetic input features.
-
-The dataset is not included in this repository due to data usage restrictions.  
-Users should prepare the required `.npy` files separately and place them in the appropriate data directory before running the notebook.
+Clinical variables are combined into a 4-dimensional clinical feature vector. Sex is label-encoded, and clinical and GM features are standardized before model training. The data files are not included in this repository due to ADNI data usage restrictions.
 
 
 
